@@ -77,7 +77,7 @@ const CONFIG = {
         // },
         skype: {
             enabled: true,
-            url: "skype:yourusername?chat",
+            url: "https://skype.com/username",
             title: "Skype"
         },
 
