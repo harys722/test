@@ -1,279 +1,931 @@
-// Profile Configuration
-// Edit this file to customize your profile
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Profile Template</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 
-const CONFIG = {
-    // Basic Profile Information
-    profile: {
-        image: "https://cdn.harys.is-a.dev/avatars/main.png", // Replace with your image URL
-        name: "- HARYs -",
-        description: `Hey, I'm - HARYs -. Welcome to my digital space!
-        <br />
-        I'm a beginner passionate developer. I love creating and sharing.
-        <br />
-        <i>Connect with me on social media!</i>`,
-        footer: "Made with using <a href='https://github.com/harys722/profile-template'>Enhanced Profile Template</a>" // You can change the footer of your profile but keeping it intact will be appreciated.
-    },
-
-    // Social Media Links
-    // Set 'enabled' to 'true' to show the social media icon
-    // Set 'enabled' to 'false' to hide the social media icon
-    socials: {
-        // Popular Development Platforms
-        github: {
-            enabled: true,
-            url: "https://github.com/harys722",
-            title: "GitHub"
-        },
-        gitlab: {
-            enabled: true,
-            url: "https://gitlab.com/harys722",
-            title: "GitLab"
-        },
-        bitbucket: {
-            enabled: true,
-            url: "https://bitbucket.org/harys722", 
-            title: "Bitbucket"
-        },
-        codepen: {
-            enabled: true,
-            url: "https://codepen.io/harys722", 
-            title: "CodePen"
-        },
-        replit: {
-            enabled: false,
-            url: "https://replit.com/@harys722", 
-            title: "Replit"
-        },
-        stackoverflow: {
-            enabled: false,
-            url: "https://stackoverflow.com/users/harys722", 
-            title: "Stack Overflow"
-        },
-
-        // Communication Platforms
-        discord: {
-            enabled: true,
-            url: "https://discord.com/users/1203357768610746385",
-            title: "Discord"
-        },
-        email: {
-            enabled: true,
-            url: "mailto:contact@harys.is-a.dev",
-            title: "Email"
-        },
-        telegram: {
-            enabled: false,
-            url: "https://t.me/harys722", 
-            title: "Telegram"
-        },
-        whatsapp: {
-            enabled: false,
-            url: "https://wa.me/1234567890", 
-            title: "WhatsApp"
-        },
-        signal: {
-            enabled: false,
-            url: "https://signal.me/#p/+1234567890", 
-            title: "Signal"
-        },
-        skype: {
-            enabled: true,
-            url: "skype:harys722?chat", 
-            title: "Skype"
-        },
-
-        // Social Media Platforms
-        reddit: {
-            enabled: true,
-            url: "https://reddit.com/user/harys722/",
-            title: "Reddit"
-        },
-        twitter: {
-            enabled: false,
-            url: "https://twitter.com/harys722", 
-            title: "Twitter"
-        },
-        facebook: {
-            enabled: false,
-            url: "https://facebook.com/harys722", 
-            title: "Facebook"
-        },
-        instagram: {
-            enabled: false,
-            url: "https://instagram.com/harys722", 
-            title: "Instagram"
-        },
-        tiktok: {
-            enabled: false,
-            url: "https://tiktok.com/@harys722", 
-            title: "TikTok"
-        },
-        snapchat: {
-            enabled: true,
-            url: "https://snapchat.com/add/harys722", 
-            title: "Snapchat"
-        },
-        mastodon: {
-            enabled: false,
-            url: "https://mastodon.social/@harys722", 
-            title: "Mastodon"
-        },
-        bluesky: {
-            enabled: false,
-            url: "https://bsky.app/profile/harys722", 
-            title: "Bluesky"
-        },
-        threads: {
-            enabled: false,
-            url: "https://threads.net/@harys722", 
-            title: "Threads"
-        },
-
-        // Professional Networks
-        linkedin: {
-            enabled: true,
-            url: "https://linkedin.com/in/harys722", 
-            title: "LinkedIn"
-        },
-        behance: {
-            enabled: false,
-            url: "https://behance.net/harys722", 
-            title: "Behance"
-        },
-        dribbble: {
-            enabled: false,
-            url: "https://dribbble.com/harys722", 
-            title: "Dribbble"
-        },
-        upwork: {
-            enabled: false,
-            url: "https://upwork.com/freelancers/harys722", 
-            title: "Upwork"
-        },
-        fiverr: {
-            enabled: false,
-            url: "https://fiverr.com/harys722", 
-            title: "Fiverr"
-        },
-
-        // Content Creation Platforms
-        youtube: {
-            enabled: false,
-            url: "https://youtube.com/@harys722", 
-            title: "YouTube"
-        },
-        twitch: {
-            enabled: false,
-            url: "https://twitch.tv/harys722", 
-            title: "Twitch"
-        },
-        medium: {
-            enabled: false,
-            url: "https://medium.com/@harys722", 
-            title: "Medium"
-        },
-        devto: {
-            enabled: false,
-            url: "https://dev.to/harys722", // 
-            title: "Dev.to"
-        },
-        hashnode: {
-            enabled: false,
-            url: "https://hashnode.com/@harys722", 
-            title: "Hashnode"
-        },
-        substack: {
-            enabled: false,
-            url: "https://harys722.substack.com", 
-            title: "Substack"
-        },
-
-        // Gaming Platforms
-        steam: {
-            enabled: false,
-            url: "https://steamcommunity.com/id/harys722", 
-            title: "Steam"
-        },
-        epicgames: {
-            enabled: false,
-            url: "https://store.epicgames.com/u/harys722", 
-            title: "Epic Games"
-        },
-        xbox: {
-            enabled: false,
-            url: "https://account.xbox.com/profile?gamertag=harys722", 
-            title: "Xbox Live"
-        },
-        playstation: {
-            enabled: false,
-            url: "https://psnprofiles.com/harys722", 
-            title: "PlayStation"
-        },
-
-        // Music Platforms
-        spotify: {
-            enabled: false,
-            url: "https://open.spotify.com/user/harys722", 
-            title: "Spotify"
-        },
-        soundcloud: {
-            enabled: false,
-            url: "https://soundcloud.com/harys722", 
-            title: "SoundCloud"
-        },
-        applemusic: {
-            enabled: false,
-            url: "https://music.apple.com/profile/harys722", 
-            title: "Apple Music"
-        },
-        bandcamp: {
-            enabled: false,
-            url: "https://harys722.bandcamp.com", 
-            title: "Bandcamp"
-        },
-
-        // Other Platforms
-        pinterest: {
-            enabled: false,
-            url: "https://pinterest.com/harys722", 
-            title: "Pinterest"
-        },
-        tumblr: {
-            enabled: false,
-            url: "https://harys722.tumblr.com", 
-            title: "Tumblr"
-        },
-        flickr: {
-            enabled: false,
-            url: "https://flickr.com/people/harys722", 
-            title: "Flickr"
-        },
-        vimeo: {
-            enabled: false,
-            url: "https://vimeo.com/harys722",
-            title: "Vimeo"
-        },
-        patreon: {
-            enabled: false,
-            url: "https://patreon.com/harys722", 
-            title: "Patreon"
-        },
-        kofi: {
-            enabled: false,
-            url: "https://ko-fi.com/harys722",
-            title: "Ko-fi"
-        },
-        buymeacoffee: {
-            enabled: false,
-            url: "https://buymeacoffee.com/harys722",
-            title: "Buy Me a Coffee"
-        },
-
-        // Personal Website/Portfolio
-        website: {
-            enabled: true,
-            url: "https://www.harys.is-a.dev/",
-            title: "Portfolio"
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    }
-};
+
+        body {
+            font-family: "Lato", sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e8e8e8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Particle Canvas */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .info-box {
+            background: rgba(26, 26, 46, 0.2);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 35px;
+            padding: 60px;
+            max-width: 750px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .center-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            object-fit: cover;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            position: relative;
+        }
+
+        .center-img:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+            border-color: #ff6b6b;
+        }
+
+        .title {
+            font-size: 2.8em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin: 25px 0 20px;
+            animation: fadeIn 0.8s ease-out 0.3s both, titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .details {
+            font-size: 1.2em;
+            color: #c8c8c8;
+            margin-bottom: 35px;
+            animation: fadeIn 0.8s ease-out 0.5s both;
+            line-height: 1.8;
+        }
+
+        .details i {
+            color: #4ecdc4;
+            font-style: italic;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            animation: fadeIn 0.8s ease-out 0.7s both;
+            margin-bottom: 20px;
+        }
+
+        .social-icons > div {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-icons > div:hover {
+            transform: translateY(-8px) scale(1.05);
+        }
+
+        .social-icons a {
+            display: block;
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #e8e8e8;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-icons a:hover::before {
+            left: 100%;
+        }
+
+        .social-icons a:hover {
+            background: rgba(71, 207, 115, 0.2);
+            border-color: #47cf73;
+            color: #47cf73;
+            box-shadow: 0 8px 25px rgba(71, 207, 115, 0.4);
+            transform: rotate(5deg);
+        }
+
+        .social-icons img {
+            width: 26px;
+            height: 26px;
+            filter: brightness(0) invert(1);
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover img {
+            transform: scale(1.2);
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(71, 207, 115, 0.8));
+        }
+
+        /* Platform-specific hover colors */
+        .social-icons .discord a:hover {
+            background: rgba(88, 101, 242, 0.2);
+            border-color: #5865f2;
+            color: #5865f2;
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.3);
+        }
+
+        .social-icons .github a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .social-icons .gitlab a:hover {
+            background: rgba(252, 109, 38, 0.2);
+            border-color: #fc6d26;
+            color: #fc6d26;
+            box-shadow: 0 5px 15px rgba(252, 109, 38, 0.3);
+        }
+
+        .social-icons .reddit a:hover {
+            background: rgba(255, 69, 0, 0.2);
+            border-color: #ff4500;
+            color: #ff4500;
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
+        }
+
+        .social-icons .email a:hover {
+            background: rgba(234, 67, 53, 0.2);
+            border-color: #ea4335;
+            color: #ea4335;
+            box-shadow: 0 5px 15px rgba(234, 67, 53, 0.3);
+        }
+
+        .social-icons .website a:hover {
+            background: rgba(74, 144, 226, 0.2);
+            border-color: #4a90e2;
+            color: #4a90e2;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .social-icons .bitbucket a:hover {
+            background: rgba(37, 83, 164, 0.2);
+            border-color: #2553a4;
+            color: #2553a4;
+            box-shadow: 0 5px 15px rgba(37, 83, 164, 0.3);
+        }
+
+        .social-icons .codepen a:hover {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: #000000;
+            color: #000000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icons .replit a:hover {
+            background: rgba(102, 102, 102, 0.2);
+            border-color: #666666;
+            color: #666666;
+            box-shadow: 0 5px 15px rgba(102, 102, 102, 0.3);
+        }
+
+        .social-icons .stackoverflow a:hover {
+            background: rgba(244, 128, 36, 0.2);
+            border-color: #f48024;
+            color: #f48024;
+            box-shadow: 0 5px 15px rgba(244, 128, 36, 0.3);
+        }
+
+        .social-icons .telegram a:hover {
+            background: rgba(0, 136, 204, 0.2);
+            border-color: #0088cc;
+            color: #0088cc;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+        }
+
+        .social-icons .whatsapp a:hover {
+            background: rgba(37, 211, 102, 0.2);
+            border-color: #25d366;
+            color: #25d366;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .social-icons .signal a:hover {
+            background: rgba(59, 114, 223, 0.2);
+            border-color: #3b72df;
+            color: #3b72df;
+            box-shadow: 0 5px 15px rgba(59, 114, 223, 0.3);
+        }
+
+        .social-icons .skype a:hover {
+            background: rgba(0, 175, 240, 0.2);
+            border-color: #00aff0;
+            color: #00aff0;
+            box-shadow: 0 5px 15px rgba(0, 175, 240, 0.3);
+        }
+
+        .social-icons .twitter a:hover {
+            background: rgba(29, 161, 242, 0.2);
+            border-color: #1da1f2;
+            color: #1da1f2;
+            box-shadow: 0 5px 15px rgba(29, 161, 242, 0.3);
+        }
+
+        .social-icons .facebook a:hover {
+            background: rgba(24, 119, 242, 0.2);
+            border-color: #1877f2;
+            color: #1877f2;
+            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
+        }
+
+        .social-icons .instagram a:hover {
+            background: rgba(225, 48, 108, 0.2);
+            border-color: #e1306c;
+            color: #e1306c;
+            box-shadow: 0 5px 15px rgba(225, 48, 108, 0.3);
+        }
+
+        .social-icons .tiktok a:hover {
+            background: rgba(255, 0, 80, 0.2);
+            border-color: #ff0050;
+            color: #ff0050;
+            box-shadow: 0 5px 15px rgba(255, 0, 80, 0.3);
+        }
+
+        .social-icons .snapchat a:hover {
+            background: rgba(255, 252, 0, 0.2);
+            border-color: #fffc00;
+            color: #fffc00;
+            box-shadow: 0 5px 15px rgba(255, 252, 0, 0.3);
+        }
+
+        .social-icons .mastodon a:hover {
+            background: rgba(99, 100, 255, 0.2);
+            border-color: #6364ff;
+            color: #6364ff;
+            box-shadow: 0 5px 15px rgba(99, 100, 255, 0.3);
+        }
+
+        .social-icons .bluesky a:hover {
+            background: rgba(0, 136, 255, 0.2);
+            border-color: #0088ff;
+            color: #0088ff;
+            box-shadow: 0 5px 15px rgba(0, 136, 255, 0.3);
+        }
+
+        .social-icons .threads a:hover {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: #000000;
+            color: #000000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icons .linkedin a:hover {
+            background: rgba(0, 119, 181, 0.2);
+            border-color: #0077b5;
+            color: #0077b5;
+            box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+        }
+
+        .social-icons .behance a:hover {
+            background: rgba(0, 85, 255, 0.2);
+            border-color: #0055ff;
+            color: #0055ff;
+            box-shadow: 0 5px 15px rgba(0, 85, 255, 0.3);
+        }
+
+        .social-icons .dribbble a:hover {
+            background: rgba(234, 76, 137, 0.2);
+            border-color: #ea4c89;
+            color: #ea4c89;
+            box-shadow: 0 5px 15px rgba(234, 76, 137, 0.3);
+        }
+
+        .social-icons .upwork a:hover {
+            background: rgba(108, 194, 26, 0.2);
+            border-color: #6cc21a;
+            color: #6cc21a;
+            box-shadow: 0 5px 15px rgba(108, 194, 26, 0.3);
+        }
+
+        .social-icons .fiverr a:hover {
+            background: rgba(29, 191, 115, 0.2);
+            border-color: #1dbf73;
+            color: #1dbf73;
+            box-shadow: 0 5px 15px rgba(29, 191, 115, 0.3);
+        }
+
+        .social-icons .youtube a:hover {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: #ff0000;
+            color: #ff0000;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .social-icons .twitch a:hover {
+            background: rgba(145, 70, 255, 0.2);
+            border-color: #9146ff;
+            color: #9146ff;
+            box-shadow: 0 5px 15px rgba(145, 70, 255, 0.3);
+        }
+
+        .social-icons .medium a:hover {
+            background: rgba(2, 184, 117, 0.2);
+            border-color: #02b875;
+            color: #02b875;
+            box-shadow: 0 5px 15px rgba(2, 184, 117, 0.3);
+        }
+
+        .social-icons .devto a:hover {
+            background: rgba(15, 23, 42, 0.2);
+            border-color: #0f172a;
+            color: #0f172a;
+            box-shadow: 0 5px 15px rgba(15, 23, 42, 0.3);
+        }
+
+        .social-icons .hashnode a:hover {
+            background: rgba(46, 91, 255, 0.2);
+            border-color: #2e5bff;
+            color: #2e5bff;
+            box-shadow: 0 5px 15px rgba(46, 91, 255, 0.3);
+        }
+
+        .social-icons .substack a:hover {
+            background: rgba(255, 102, 0, 0.2);
+            border-color: #ff6600;
+            color: #ff6600;
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+        }
+
+        .social-icons .steam a:hover {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: #171a21;
+            color: #171a21;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icons .epicgames a:hover {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: #000000;
+            color: #000000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icons .xbox a:hover {
+            background: rgba(16, 124, 16, 0.2);
+            border-color: #107c10;
+            color: #107c10;
+            box-shadow: 0 5px 15px rgba(16, 124, 16, 0.3);
+        }
+
+        .social-icons .playstation a:hover {
+            background: rgba(0, 55, 145, 0.2);
+            border-color: #003791;
+            color: #003791;
+            box-shadow: 0 5px 15px rgba(0, 55, 145, 0.3);
+        }
+
+        .social-icons .spotify a:hover {
+            background: rgba(30, 215, 96, 0.2);
+            border-color: #1ed760;
+            color: #1ed760;
+            box-shadow: 0 5px 15px rgba(30, 215, 96, 0.3);
+        }
+
+        .social-icons .soundcloud a:hover {
+            background: rgba(255, 51, 0, 0.2);
+            border-color: #ff3300;
+            color: #ff3300;
+            box-shadow: 0 5px 15px rgba(255, 51, 0, 0.3);
+        }
+
+        .social-icons .applemusic a:hover {
+            background: rgba(250, 54, 69, 0.2);
+            border-color: #fa3645;
+            color: #fa3645;
+            box-shadow: 0 5px 15px rgba(250, 54, 69, 0.3);
+        }
+
+        .social-icons .bandcamp a:hover {
+            background: rgba(0, 150, 163, 0.2);
+            border-color: #0096a3;
+            color: #0096a3;
+            box-shadow: 0 5px 15px rgba(0, 150, 163, 0.3);
+        }
+
+        .social-icons .pinterest a:hover {
+            background: rgba(203, 32, 39, 0.2);
+            border-color: #cb2027;
+            color: #cb2027;
+            box-shadow: 0 5px 15px rgba(203, 32, 39, 0.3);
+        }
+
+        .social-icons .tumblr a:hover {
+            background: rgba(52, 73, 94, 0.2);
+            border-color: #34495e;
+            color: #34495e;
+            box-shadow: 0 5px 15px rgba(52, 73, 94, 0.3);
+        }
+
+        .social-icons .flickr a:hover {
+            background: rgba(0, 99, 220, 0.2);
+            border-color: #0063dc;
+            color: #0063dc;
+            box-shadow: 0 5px 15px rgba(0, 99, 220, 0.3);
+        }
+
+        .social-icons .vimeo a:hover {
+            background: rgba(29, 183, 231, 0.2);
+            border-color: #1db7e7;
+            color: #1db7e7;
+            box-shadow: 0 5px 15px rgba(29, 183, 231, 0.3);
+        }
+
+        .social-icons .patreon a:hover {
+            background: rgba(255, 66, 77, 0.2);
+            border-color: #f96854;
+            color: #f96854;
+            box-shadow: 0 5px 15px rgba(255, 66, 77, 0.3);
+        }
+
+        .social-icons .kofi a:hover {
+            background: rgba(255, 93, 77, 0.2);
+            border-color: #ff5f5f;
+            color: #ff5f5f;
+            box-shadow: 0 5px 15px rgba(255, 93, 77, 0.3);
+        }
+
+        .social-icons .buymeacoffee a:hover {
+            background: rgba(255, 221, 0, 0.2);
+            border-color: #ffdd00;
+            color: #ffdd00;
+            box-shadow: 0 5px 15px rgba(255, 221, 0, 0.3);
+        }
+
+        /* Enhanced Tooltip */
+        .social-icons > div::before {
+            content: attr(title);
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icons > div::after {
+            content: "";
+            position: absolute;
+            bottom: 62px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-icons > div:hover::before,
+        .social-icons > div:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+            animation: fadeIn 0.8s ease-out 0.9s both;
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 768px) {
+            .info-box {
+                padding: 40px 25px;
+                margin: 20px;
+                border-radius: 25px;
+            }
+            .title { font-size: 2.2em; }
+            .details { font-size: 1.1em; }
+            .social-icons { gap: 15px; }
+            .social-icons a { width: 50px; height: 50px; }
+            .social-icons img { width: 22px; height: 22px; }
+        }
+
+        @media (max-width: 480px) {
+            .center-img { width: 100px; height: 100px; }
+            .title { font-size: 2em; }
+            .social-icons { gap: 12px; }
+            .social-icons a { width: 45px; height: 45px; }
+            .social-icons img { width: 20px; height: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    
+    <div class="info-box">
+        <img src="https://via.placeholder.com/120" alt="Profile Picture" class="center-img" id="profile-img">
+        <h1 class="title" id="profile-name">Your Name</h1>
+        <p class="details" id="profile-description">Your description goes here. <i>Make it interesting!</i></p>
+        <div class="social-icons" id="social-icons">
+            <!-- Social icons will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <footer>
+        <p id="footer-text">© 2025 Enhanced Profile Template</p>
+    </footer>
+
+    <script src="config.js"></script>
+    <script>
+        // Social Media Icons Image URLs
+        const SOCIAL_ICONS = {
+            github: "https://cdn.harys.is-a.dev/icons/github.svg",
+            gitlab: "https://cdn.harys.is-a.dev/icons/gitlab.svg",
+            discord: "https://cdn.harys.is-a.dev/icons/discord.svg",
+            reddit: "https://cdn.harys.is-a.dev/icons/reddit.svg",
+            email: "https://cdn.harys.is-a.dev/icons/gmail.svg",
+            website: "https://cdn.harys.is-a.dev/icons/website.svg",
+            bitbucket: "https://cdn.harys.is-a.dev/icons/bitbucket.svg",
+            codepen: "https://cdn.harys.is-a.dev/icons/codepen.svg",
+            replit: "https://cdn.harys.is-a.dev/icons/replit.svg",
+            stackoverflow: "https://cdn.harys.is-a.dev/icons/stackoverflow.svg",
+            telegram: "https://cdn.harys.is-a.dev/icons/telegram.svg",
+            whatsapp: "https://cdn.harys.is-a.dev/icons/whatsapp.svg",
+            signal: "https://cdn.harys.is-a.dev/icons/signal.svg",
+            skype: "https://cdn.harys.is-a.dev/icons/skype.svg",
+            twitter: "https://cdn.harys.is-a.dev/icons/x.svg",
+            facebook: "https://cdn.harys.is-a.dev/icons/facebook.svg",
+            instagram: "https://cdn.harys.is-a.dev/icons/instagram.svg",
+            tiktok: "https://cdn.harys.is-a.dev/icons/tiktok.svg",
+            snapchat: "https://cdn.harys.is-a.dev/icons/snapchat.svg",
+            mastodon: "https://cdn.harys.is-a.dev/icons/mastodon.svg",
+            bluesky: "https://cdn.harys.is-a.dev/icons/bluesky.svg",
+            threads: "https://cdn.harys.is-a.dev/icons/threads.svg",
+            linkedin: "https://cdn.harys.is-a.dev/icons/linkedin.svg",
+            behance: "https://cdn.harys.is-a.dev/icons/behance.svg",
+            dribbble: "https://cdn.harys.is-a.dev/icons/dribbble.svg",
+            upwork: "https://cdn.harys.is-a.dev/icons/upwork.svg",
+            fiverr: "https://cdn.harys.is-a.dev/icons/fiverr.svg",
+            youtube: "https://cdn.harys.is-a.dev/icons/youtube.svg",
+            twitch: "https://cdn.harys.is-a.dev/icons/twitch.svg",
+            medium: "https://cdn.harys.is-a.dev/icons/medium.svg",
+            devto: "https://cdn.harys.is-a.dev/icons/devto.svg",
+            hashnode: "https://cdn.harys.is-a.dev/icons/hashnode.svg",
+            substack: "https://cdn.harys.is-a.dev/icons/substack.svg",
+            steam: "https://cdn.harys.is-a.dev/icons/steam.svg",
+            epicgames: "https://cdn.harys.is-a.dev/icons/epicgames.svg",
+            xbox: "https://cdn.harys.is-a.dev/icons/xbox.svg",
+            playstation: "https://cdn.harys.is-a.dev/icons/playstation.svg",
+            spotify: "https://cdn.harys.is-a.dev/icons/spotify.svg",
+            soundcloud: "https://cdn.harys.is-a.dev/icons/soundcloud.svg",
+            applemusic: "https://cdn.harys.is-a.dev/icons/applemusic.svg",
+            bandcamp: "https://cdn.harys.is-a.dev/icons/bandcamp.svg",
+            pinterest: "https://cdn.harys.is-a.dev/icons/pinterest.svg",
+            tumblr: "https://cdn.harys.is-a.dev/icons/tumblr.svg",
+            flickr: "https://cdn.harys.is-a.dev/icons/flickr.svg",
+            vimeo: "https://cdn.harys.is-a.dev/icons/vimeo.svg",
+            patreon: "https://cdn.harys.is-a.dev/icons/patreon.svg",
+            kofi: "https://cdn.harys.is-a.dev/icons/kofi.svg",
+            buymeacoffee: "https://cdn.harys.is-a.dev/icons/buymeacoffee.svg"
+        };
+
+        // Audio context for hover sounds
+        let audioContext;
+        let hoverSound;
+
+        // Initialize audio
+        function initAudio() {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                hoverSound = function() {
+                    if (!audioContext) return;
+                    if (audioContext.state === 'suspended') {
+                        audioContext.resume();
+                    }
+                    
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.1);
+                };
+            } catch (error) {
+                console.error('Audio not supported:', error);
+                hoverSound = () => {};
+            }
+        }
+
+        // Particle system
+        class ParticleSystem {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.particles = [];
+                this.isActive = true;
+                
+                this.resize();
+                this.init();
+                this.animate();
+                
+                window.addEventListener('resize', () => this.resize());
+            }
+            
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+            
+            init() {
+                this.particles = [];
+                const numParticles = Math.min(Math.floor((this.canvas.width * this.canvas.height) / 15000), 100);
+                
+                for (let i = 0; i < numParticles; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: (Math.random() - 0.5) * 1,
+                        vy: (Math.random() - 0.5) * 1,
+                        size: Math.random() * 2 + 1,
+                        opacity: Math.random() * 0.5 + 0.2
+                    });
+                }
+            }
+            
+            animate() {
+                if (!this.isActive) return;
+                
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.particles.forEach((particle, index) => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+                    
+                    if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
+                    this.ctx.fill();
+                    
+                    this.particles.slice(index + 1).forEach(otherParticle => {
+                        const dx = particle.x - otherParticle.x;
+                        const dy = particle.y - otherParticle.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(particle.x, particle.y);
+                            this.ctx.lineTo(otherParticle.x, otherParticle.y);
+                            this.ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - distance / 100)})`;
+                            this.ctx.lineWidth = 0.5;
+                            this.ctx.stroke();
+                        }
+                    });
+                });
+                
+                requestAnimationFrame(() => this.animate());
+            }
+
+            stop() {
+                this.isActive = false;
+            }
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initAudio();
+            
+            const canvas = document.getElementById('particles-canvas');
+            const particleSystem = new ParticleSystem(canvas);
+            
+            const profileImg = document.getElementById('profile-img');
+            const profileName = document.getElementById('profile-name');
+            const profileDescription = document.getElementById('profile-description');
+            const footerText = document.getElementById('footer-text');
+            
+            if (typeof CONFIG !== 'undefined' && CONFIG.profile) {
+                profileImg.src = CONFIG.profile.image || 'https://via.placeholder.com/120';
+                profileImg.onerror = () => {
+                    profileImg.src = 'https://via.placeholder.com/120';
+                };
+                profileName.textContent = CONFIG.profile.name || 'Your Name';
+                profileDescription.innerHTML = CONFIG.profile.description || 'Your description goes here. <i>Make it interesting!</i>';
+                footerText.innerHTML = CONFIG.profile.footer || '© 2025 Enhanced Profile Template';
+            } else {
+                console.error('CONFIG object not found');
+                profileImg.src = 'https://via.placeholder.com/120';
+                profileName.textContent = 'Your Name';
+                profileDescription.innerHTML = 'Your description goes here. <i>Make it interesting!</i>';
+                footerText.innerHTML = '© 2025 Enhanced Profile Template';
+            }
+            
+            const socialIconsContainer = document.getElementById('social-icons');
+            
+            if (typeof CONFIG !== 'undefined' && CONFIG.socials && typeof SOCIAL_ICONS !== 'undefined') {
+                Object.keys(CONFIG.socials).forEach(platform => {
+                    if (CONFIG.socials[platform].enabled && SOCIAL_ICONS[platform]) {
+                        const socialDiv = document.createElement('div');
+                        socialDiv.className = platform;
+                        socialDiv.title = CONFIG.socials[platform].title;
+                        
+                        const link = document.createElement('a');
+                        link.href = CONFIG.socials[platform].url;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        
+                        const img = document.createElement('img');
+                        img.src = SOCIAL_ICONS[platform];
+                        img.alt = `${CONFIG.socials[platform].title} icon`;
+                        img.onerror = () => {
+                            img.src = 'https://via.placeholder.com/26';
+                        };
+                        
+                        socialDiv.addEventListener('mouseenter', function() {
+                            if (hoverSound) {
+                                try {
+                                    hoverSound();
+                                } catch (error) {
+                                    console.error('Audio playback failed:', error);
+                                }
+                            }
+                        });
+                        
+                        link.appendChild(img);
+                        socialDiv.appendChild(link);
+                        socialIconsContainer.appendChild(socialDiv);
+                    }
+                });
+            } else {
+                console.error('CONFIG.socials or SOCIAL_ICONS not found');
+            }
+            
+            document.querySelectorAll('.social-icons a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 215, 0, 0.4)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.pointerEvents = 'none';
+                    this.appendChild(ripple);
+                    
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = `${size}px`;
+                    
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    
+                    ripple.animate([
+                        { transform: 'scale(0)', opacity: 1 },
+                        { transform: 'scale(2)', opacity: 0 }
+                    ], {
+                        duration: 600,
+                        easing: 'ease-out'
+                    });
+                    
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            profileImg.addEventListener('mouseenter', () => {
+                if (hoverSound) {
+                    try {
+                        hoverSound();
+                    } catch (error) {
+                        console.error('Audio playback failed:', error);
+                    }
+                }
+            });
+
+            let frameCount = 0;
+            let lastTime = performance.now();
+            function monitorPerformance() {
+                frameCount++;
+                const currentTime = performance.now();
+                if (currentTime - lastTime >= 1000) {
+                    const fps = frameCount;
+                    frameCount = 0;
+                    lastTime = currentTime;
+                    if (fps < 30) {
+                        particleSystem.stop();
+                    }
+                }
+                requestAnimationFrame(monitorPerformance);
+            }
+            monitorPerformance();
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    particleSystem.stop();
+                    if (audioContext) audioContext.suspend();
+                } else {
+                    particleSystem.isActive = true;
+                    particleSystem.animate();
+                    if (audioContext) audioContext.resume();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
