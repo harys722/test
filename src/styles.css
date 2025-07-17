@@ -156,10 +156,10 @@ body {
 }
 
 .social-icons .github a:hover {
-  background: rgba(255, 255, 255, 0.2); 
-  border-color: #fff; 
-  color: #fff; 
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); 
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
 }
 
 .social-icons .gitlab a:hover {
