@@ -83,26 +83,27 @@
         }
 
         .title {
-            font-size: 2.8em;
-            font-weight: 700;
-            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-            margin: 25px 0 20px;
-            animation: fadeIn 0.8s ease-out 0.3s both, titleGlow 2s ease-in-out infinite alternate;
-        }
+  font-size: 2.8em;
+  font-weight: 700;
+  background: linear-gradient(45deg, #3498db, #2980b9, #1976d2); /* Darker blue gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin: 25px 0 20px;
+  animation: fadeIn 0.8s ease-out 0.3s both, titleGlow 2s ease-in-out infinite alternate;
+}
 
-        @keyframes titleGlow {
-            from { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
-            to { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
-        }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+@keyframes titleGlow {
+  from { filter: drop-shadow(0 0 5px rgba(52, 152, 219, 0.5)); }
+  to { filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.7)); }
+}
+
 
         .details {
             font-size: 1.2em;
@@ -249,6 +250,20 @@
         footer a:hover {
             color: #ffd700;
         }
+
+       /* Webkit scrollbar styles */
+       ::-webkit-scrollbar {
+              width: 8px;
+              height: 8px;
+       }
+
+       ::-webkit-scrollbar-track {
+              background: #333; 
+       }
+
+       ::-webkit-scrollbar-thumb {
+              background: #1976d2; 
+       }
 
         /* Enhanced Responsive Design */
         @media (max-width: 768px) {
