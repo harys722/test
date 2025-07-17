@@ -14,8 +14,8 @@ const CONFIG = {
     },
 
     // Social Media Links
-    // Set 'enabled' to true to show the social media icon
-    // Set 'enabled' to false to hide the social media icon
+    // Set 'enabled' to 'true' to show the social media icon
+    // Set 'enabled' to 'false' to hide the social media icon
     socials: {
         // Popular Development Platforms
         github: {
@@ -28,16 +28,16 @@ const CONFIG = {
             url: "https://gitlab.com/harys722",
             title: "GitLab"
         },
-        // bitbucket: {
-        //     enabled: false,
-        //     url: "https://bitbucket.org/yourusername",
-        //     title: "Bitbucket"
-        // },
-        // codepen: {
-        //     enabled: false,
-        //     url: "https://codepen.io/yourusername",
-        //     title: "CodePen"
-        // },
+        bitbucket: {
+            enabled: false,
+            url: "https://bitbucket.org/yourusername",
+            title: "Bitbucket"
+        },
+        codepen: {
+            enabled: false,
+            url: "https://codepen.io/yourusername",
+            title: "CodePen"
+        },
         // replit: {
         //     enabled: false,
         //     url: "https://replit.com/@yourusername",
@@ -75,11 +75,11 @@ const CONFIG = {
         //     url: "https://signal.me/#p/+1234567890",
         //     title: "Signal"
         // },
-        // skype: {
-        //     enabled: false,
-        //     url: "skype:yourusername?chat",
-        //     title: "Skype"
-        // },
+        skype: {
+            enabled: false,
+            url: "skype:yourusername?chat",
+            title: "Skype"
+        },
 
         // Social Media Platforms
         reddit: {
