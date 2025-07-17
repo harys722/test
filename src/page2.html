@@ -53,18 +53,24 @@
         }
 
         .info-box {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 40px;
-            max-width: 650px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 700px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
-            animation: slideIn 0.8s ease-out;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-box:hover {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: #ffd700;
+            box-shadow: 0 30px 60px rgba(255, 215, 0, 0.3), inset 0 0 10px rgba(255, 215, 0, 0.2);
         }
 
         .info-box::before {
@@ -75,15 +81,14 @@
             right: -2px;
             bottom: -2px;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #dda0dd);
-            border-radius: 25px;
+            border-radius: 30px;
             z-index: -1;
-            animation: gradientShift 3s ease infinite;
-            opacity: 0.3;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        .info-box:hover::before {
+            opacity: 0.6;
         }
 
         @keyframes slideIn {
@@ -595,23 +600,6 @@
             transform: translateX(-50%) translateY(-5px);
         }
 
-        .pulse-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 50%;
-            animation: pulseRing 2s ease-out infinite;
-        }
-
-        @keyframes pulseRing {
-            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
-        }
-
         footer {
             margin-top: 30px;
             text-align: center;
@@ -622,7 +610,11 @@
 
         /* Enhanced Responsive Design */
         @media (max-width: 768px) {
-            .info-box { padding: 30px 20px; margin: 20px; }
+            .info-box {
+                padding: 30px 20px;
+                margin: 20px;
+                border-radius: 20px;
+            }
             .title { font-size: 2.2em; }
             .details { font-size: 1.1em; }
             .social-icons { gap: 15px; }
@@ -643,7 +635,6 @@
     <canvas id="particles-canvas"></canvas>
     
     <div class="info-box">
-        <div class="pulse-ring"></div>
         <img src="https://via.placeholder.com/120" alt="Profile Picture" class="center-img" id="profile-img">
         <h1 class="title" id="profile-name">Your Name</h1>
         <p class="details" id="profile-description">Your description goes here. <i>Make it interesting!</i></p>
@@ -659,56 +650,56 @@
     <script src="config.js"></script>
     <script>
         // Social Media Icons Image URLs
-const SOCIAL_ICONS = {
-    github: "https://cdn.harys.is-a.dev/icons/github.svg",
-    gitlab: "https://cdn.harys.is-a.dev/icons/gitlab.svg",
-    discord: "https://cdn.harys.is-a.dev/icons/discord.svg",
-    reddit: "https://cdn.harys.is-a.dev/icons/reddit.svg",
-    email: "https://cdn.harys.is-a.dev/icons/gmail.svg",
-    website: "https://cdn.harys.is-a.dev/icons/website.svg",
-    bitbucket: "https://cdn.harys.is-a.dev/icons/bitbucket.svg",
-    codepen: "https://cdn.harys.is-a.dev/icons/codepen.svg",
-    replit: "https://cdn.harys.is-a.dev/icons/replit.svg",
-    stackoverflow: "https://cdn.harys.is-a.dev/icons/stackoverflow.svg",
-    telegram: "https://cdn.harys.is-a.dev/icons/telegram.svg",
-    whatsapp: "https://cdn.harys.is-a.dev/icons/whatsapp.svg",
-    signal: "https://cdn.harys.is-a.dev/icons/signal.svg",
-    skype: "https://cdn.harys.is-a.dev/icons/skype.svg",
-    twitter: "https://cdn.harys.is-a.dev/icons/x.svg",
-    facebook: "https://cdn.harys.is-a.dev/icons/facebook.svg",
-    instagram: "https://cdn.harys.is-a.dev/icons/instagram.svg",
-    tiktok: "https://cdn.harys.is-a.dev/icons/tiktok.svg",
-    snapchat: "https://cdn.harys.is-a.dev/icons/snapchat.svg",
-    mastodon: "https://cdn.harys.is-a.dev/icons/mastodon.svg",
-    bluesky: "https://cdn.harys.is-a.dev/icons/bluesky.svg",
-    threads: "https://cdn.harys.is-a.dev/icons/threads.svg",
-    linkedin: "https://cdn.harys.is-a.dev/icons/linkedin.svg",
-    behance: "https://cdn.harys.is-a.dev/icons/behance.svg",
-    dribbble: "https://cdn.harys.is-a.dev/icons/dribbble.svg",
-    upwork: "https://cdn.harys.is-a.dev/icons/upwork.svg",
-    fiverr: "https://cdn.harys.is-a.dev/icons/fiverr.svg",
-    youtube: "https://cdn.harys.is-a.dev/icons/youtube.svg",
-    twitch: "https://cdn.harys.is-a.dev/icons/twitch.svg",
-    medium: "https://cdn.harys.is-a.dev/icons/medium.svg",
-    devto: "https://cdn.harys.is-a.dev/icons/devto.svg",
-    hashnode: "https://cdn.harys.is-a.dev/icons/hashnode.svg",
-    substack: "https://cdn.harys.is-a.dev/icons/substack.svg",
-    steam: "https://cdn.harys.is-a.dev/icons/steam.svg",
-    epicgames: "https://cdn.harys.is-a.dev/icons/epicgames.svg",
-    xbox: "https://cdn.harys.is-a.dev/icons/xbox.svg",
-    playstation: "https://cdn.harys.is-a.dev/icons/playstation.svg",
-    spotify: "https://cdn.harys.is-a.dev/icons/spotify.svg",
-    soundcloud: "https://cdn.harys.is-a.dev/icons/soundcloud.svg",
-    applemusic: "https://cdn.harys.is-a.dev/icons/applemusic.svg",
-    bandcamp: "https://cdn.harys.is-a.dev/icons/bandcamp.svg",
-    pinterest: "https://cdn.harys.is-a.dev/icons/pinterest.svg",
-    tumblr: "https://cdn.harys.is-a.dev/icons/tumblr.svg",
-    flickr: "https://cdn.harys.is-a.dev/icons/flickr.svg",
-    vimeo: "https://cdn.harys.is-a.dev/icons/vimeo.svg",
-    patreon: "https://cdn.harys.is-a.dev/icons/patreon.svg",
-    kofi: "https://cdn.harys.is-a.dev/icons/kofi.svg",
-    buymeacoffee: "https://cdn.harys.is-a.dev/icons/buymeacoffee.svg"
-};
+        const SOCIAL_ICONS = {
+            github: "https://cdn.harys.is-a.dev/icons/github.svg",
+            gitlab: "https://cdn.harys.is-a.dev/icons/gitlab.svg",
+            discord: "https://cdn.harys.is-a.dev/icons/discord.svg",
+            reddit: "https://cdn.harys.is-a.dev/icons/reddit.svg",
+            email: "https://cdn.harys.is-a.dev/icons/gmail.svg",
+            website: "https://cdn.harys.is-a.dev/icons/website.svg",
+            bitbucket: "https://cdn.harys.is-a.dev/icons/bitbucket.svg",
+            codepen: "https://cdn.harys.is-a.dev/icons/codepen.svg",
+            replit: "https://cdn.harys.is-a.dev/icons/replit.svg",
+            stackoverflow: "https://cdn.harys.is-a.dev/icons/stackoverflow.svg",
+            telegram: "https://cdn.harys.is-a.dev/icons/telegram.svg",
+            whatsapp: "https://cdn.harys.is-a.dev/icons/whatsapp.svg",
+            signal: "https://cdn.harys.is-a.dev/icons/signal.svg",
+            skype: "https://cdn.harys.is-a.dev/icons/skype.svg",
+            twitter: "https://cdn.harys.is-a.dev/icons/x.svg",
+            facebook: "https://cdn.harys.is-a.dev/icons/facebook.svg",
+            instagram: "https://cdn.harys.is-a.dev/icons/instagram.svg",
+            tiktok: "https://cdn.harys.is-a.dev/icons/tiktok.svg",
+            snapchat: "https://cdn.harys.is-a.dev/icons/snapchat.svg",
+            mastodon: "https://cdn.harys.is-a.dev/icons/mastodon.svg",
+            bluesky: "https://cdn.harys.is-a.dev/icons/bluesky.svg",
+            threads: "https://cdn.harys.is-a.dev/icons/threads.svg",
+            linkedin: "https://cdn.harys.is-a.dev/icons/linkedin.svg",
+            behance: "https://cdn.harys.is-a.dev/icons/behance.svg",
+            dribbble: "https://cdn.harys.is-a.dev/icons/dribbble.svg",
+            upwork: "https://cdn.harys.is-a.dev/icons/upwork.svg",
+            fiverr: "https://cdn.harys.is-a.dev/icons/fiverr.svg",
+            youtube: "https://cdn.harys.is-a.dev/icons/youtube.svg",
+            twitch: "https://cdn.harys.is-a.dev/icons/twitch.svg",
+            medium: "https://cdn.harys.is-a.dev/icons/medium.svg",
+            devto: "https://cdn.harys.is-a.dev/icons/devto.svg",
+            hashnode: "https://cdn.harys.is-a.dev/icons/hashnode.svg",
+            substack: "https://cdn.harys.is-a.dev/icons/substack.svg",
+            steam: "https://cdn.harys.is-a.dev/icons/steam.svg",
+            epicgames: "https://cdn.harys.is-a.dev/icons/epicgames.svg",
+            xbox: "https://cdn.harys.is-a.dev/icons/xbox.svg",
+            playstation: "https://cdn.harys.is-a.dev/icons/playstation.svg",
+            spotify: "https://cdn.harys.is-a.dev/icons/spotify.svg",
+            soundcloud: "https://cdn.harys.is-a.dev/icons/soundcloud.svg",
+            applemusic: "https://cdn.harys.is-a.dev/icons/applemusic.svg",
+            bandcamp: "https://cdn.harys.is-a.dev/icons/bandcamp.svg",
+            pinterest: "https://cdn.harys.is-a.dev/icons/pinterest.svg",
+            tumblr: "https://cdn.harys.is-a.dev/icons/tumblr.svg",
+            flickr: "https://cdn.harys.is-a.dev/icons/flickr.svg",
+            vimeo: "https://cdn.harys.is-a.dev/icons/vimeo.svg",
+            patreon: "https://cdn.harys.is-a.dev/icons/patreon.svg",
+            kofi: "https://cdn.harys.is-a.dev/icons/kofi.svg",
+            buymeacoffee: "https://cdn.harys.is-a.dev/icons/buymeacoffee.svg"
+        };
 
         // Audio context for hover sounds
         let audioContext;
@@ -719,7 +710,6 @@ const SOCIAL_ICONS = {
             try {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 
-                // Create a simple beep sound
                 hoverSound = function() {
                     if (!audioContext) return;
                     if (audioContext.state === 'suspended') {
@@ -742,7 +732,7 @@ const SOCIAL_ICONS = {
                 };
             } catch (error) {
                 console.error('Audio not supported:', error);
-                hoverSound = () => {}; // No-op function
+                hoverSound = () => {};
             }
         }
 
@@ -773,7 +763,7 @@ const SOCIAL_ICONS = {
             
             init() {
                 this.particles = [];
-                const numParticles = Math.min(Math.floor((this.canvas.width * this.canvas.height) / 20000), 100); // Cap particles for performance
+                const numParticles = Math.min(Math.floor((this.canvas.width * this.canvas.height) / 15000), 100);
                 
                 for (let i = 0; i < numParticles; i++) {
                     this.particles.push({
@@ -782,7 +772,7 @@ const SOCIAL_ICONS = {
                         vx: (Math.random() - 0.5) * 0.5,
                         vy: (Math.random() - 0.5) * 0.5,
                         size: Math.random() * 2 + 1,
-                        opacity: Math.random() * 0.3 + 0.1
+                        opacity: Math.random() * 0.5 + 0.2
                     });
                 }
             }
@@ -793,32 +783,27 @@ const SOCIAL_ICONS = {
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
                 
                 this.particles.forEach((particle, index) => {
-                    // Update position
                     particle.x += particle.vx;
                     particle.y += particle.vy;
                     
-                    // Mouse interaction
                     const dx = this.mouse.x - particle.x;
                     const dy = this.mouse.y - particle.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     
                     if (distance < 100) {
                         const force = (100 - distance) / 100;
-                        particle.vx += dx * force * 0.01;
-                        particle.vy += dy * force * 0.01;
+                        particle.vx += dx * force * 0.0001;
+                        particle.vy += dy * force * 0.0001;
                     }
                     
-                    // Boundary check
                     if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
                     if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
                     
-                    // Draw particle
                     this.ctx.beginPath();
                     this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                    this.ctx.fillStyle = `rgba(255, 215, 0, ${particle.opacity})`; // Use theme color
+                    this.ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
                     this.ctx.fill();
                     
-                    // Draw connections
                     this.particles.slice(index + 1).forEach(otherParticle => {
                         const dx = particle.x - otherParticle.x;
                         const dy = particle.y - otherParticle.y;
@@ -828,7 +813,7 @@ const SOCIAL_ICONS = {
                             this.ctx.beginPath();
                             this.ctx.moveTo(particle.x, particle.y);
                             this.ctx.lineTo(otherParticle.x, otherParticle.y);
-                            this.ctx.strokeStyle = `rgba(255, 215, 0, ${0.1 * (1 - distance / 100)})`;
+                            this.ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - distance / 100)})`;
                             this.ctx.lineWidth = 0.5;
                             this.ctx.stroke();
                         }
@@ -845,14 +830,11 @@ const SOCIAL_ICONS = {
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize audio
             initAudio();
             
-            // Initialize particles
             const canvas = document.getElementById('particles-canvas');
             const particleSystem = new ParticleSystem(canvas);
             
-            // Populate profile information with fallbacks
             const profileImg = document.getElementById('profile-img');
             const profileName = document.getElementById('profile-name');
             const profileDescription = document.getElementById('profile-description');
@@ -871,7 +853,6 @@ const SOCIAL_ICONS = {
                 profileDescription.innerHTML = 'Your description goes here. <i>Make it interesting!</i>';
             }
             
-            // Populate social media icons
             const socialIconsContainer = document.getElementById('social-icons');
             
             if (typeof CONFIG !== 'undefined' && CONFIG.socials && typeof SOCIAL_ICONS !== 'undefined') {
@@ -890,10 +871,9 @@ const SOCIAL_ICONS = {
                         img.src = SOCIAL_ICONS[platform];
                         img.alt = `${CONFIG.socials[platform].title} icon`;
                         img.onerror = () => {
-                            img.src = 'https://via.placeholder.com/26'; // Fallback icon
+                            img.src = 'https://via.placeholder.com/26';
                         };
                         
-                        // Add hover sound effect
                         socialDiv.addEventListener('mouseenter', function() {
                             if (hoverSound) {
                                 try {
@@ -913,7 +893,6 @@ const SOCIAL_ICONS = {
                 console.error('CONFIG.socials or SOCIAL_ICONS not found');
             }
             
-            // Add ripple effect on click
             document.querySelectorAll('.social-icons a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     const ripple = document.createElement('span');
@@ -945,7 +924,6 @@ const SOCIAL_ICONS = {
                 });
             });
 
-            // Add profile image hover effect
             profileImg.addEventListener('mouseenter', () => {
                 if (hoverSound) {
                     try {
@@ -956,7 +934,6 @@ const SOCIAL_ICONS = {
                 }
             });
 
-            // Optimize performance for low-end devices
             let frameCount = 0;
             let lastTime = performance.now();
             function monitorPerformance() {
@@ -967,14 +944,13 @@ const SOCIAL_ICONS = {
                     frameCount = 0;
                     lastTime = currentTime;
                     if (fps < 30) {
-                        particleSystem.stop(); // Stop particles if FPS is low
+                        particleSystem.stop();
                     }
                 }
                 requestAnimationFrame(monitorPerformance);
             }
             monitorPerformance();
 
-            // Handle visibility changes
             document.addEventListener('visibilitychange', () => {
                 if (document.hidden) {
                     particleSystem.stop();
