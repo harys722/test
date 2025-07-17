@@ -133,7 +133,7 @@ const CONFIG = {
              enabled: true,
              url: "https://linkedin.com/in/yourusername",
              title: "LinkedIn"
-        // },
+         },
         // behance: {
         //     enabled: false,
         //     url: "https://behance.net/yourusername",
