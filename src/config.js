@@ -29,12 +29,12 @@ const CONFIG = {
             title: "GitLab"
         },
         bitbucket: {
-            enabled: false,
+            enabled: true,
             url: "https://bitbucket.org/yourusername",
             title: "Bitbucket"
         },
         codepen: {
-            enabled: false,
+            enabled: true,
             url: "https://codepen.io/yourusername",
             title: "CodePen"
         },
@@ -76,7 +76,7 @@ const CONFIG = {
         //     title: "Signal"
         // },
         skype: {
-            enabled: false,
+            enabled: true,
             url: "skype:yourusername?chat",
             title: "Skype"
         },
@@ -107,11 +107,11 @@ const CONFIG = {
         //     url: "https://tiktok.com/@yourusername",
         //     title: "TikTok"
         // },
-        // snapchat: {
-        //     enabled: false,
-        //     url: "https://snapchat.com/add/yourusername",
-        //     title: "Snapchat"
-        // },
+         snapchat: {
+             enabled: true,
+             url: "https://snapchat.com/add/yourusername",
+             title: "Snapchat"
+         },
         // mastodon: {
         //     enabled: false,
         //     url: "https://mastodon.social/@yourusername",
@@ -129,10 +129,10 @@ const CONFIG = {
         // },
 
         // Professional Networks
-        // linkedin: {
-        //     enabled: false,
-        //     url: "https://linkedin.com/in/yourusername",
-        //     title: "LinkedIn"
+        linkedin: {
+             enabled: true,
+             url: "https://linkedin.com/in/yourusername",
+             title: "LinkedIn"
         // },
         // behance: {
         //     enabled: false,
