@@ -657,8 +657,59 @@
     </footer
 
     <script src="config.js"></script>
-    <script src="script.js"></script>
     <script>
+        // Social Media Icons Image URLs
+const SOCIAL_ICONS = {
+    github: "https://cdn.harys.is-a.dev/icons/github.svg",
+    gitlab: "https://cdn.harys.is-a.dev/icons/gitlab.svg",
+    discord: "https://cdn.harys.is-a.dev/icons/discord.svg",
+    reddit: "https://cdn.harys.is-a.dev/icons/reddit.svg",
+    email: "https://cdn.harys.is-a.dev/icons/gmail.svg",
+    website: "https://cdn.harys.is-a.dev/icons/website.svg",
+    bitbucket: "https://cdn.harys.is-a.dev/icons/bitbucket.svg",
+    codepen: "https://cdn.harys.is-a.dev/icons/codepen.svg",
+    replit: "https://cdn.harys.is-a.dev/icons/replit.svg",
+    stackoverflow: "https://cdn.harys.is-a.dev/icons/stackoverflow.svg",
+    telegram: "https://cdn.harys.is-a.dev/icons/telegram.svg",
+    whatsapp: "https://cdn.harys.is-a.dev/icons/whatsapp.svg",
+    signal: "https://cdn.harys.is-a.dev/icons/signal.svg",
+    skype: "https://cdn.harys.is-a.dev/icons/skype.svg",
+    twitter: "https://cdn.harys.is-a.dev/icons/x.svg",
+    facebook: "https://cdn.harys.is-a.dev/icons/facebook.svg",
+    instagram: "https://cdn.harys.is-a.dev/icons/instagram.svg",
+    tiktok: "https://cdn.harys.is-a.dev/icons/tiktok.svg",
+    snapchat: "https://cdn.harys.is-a.dev/icons/snapchat.svg",
+    mastodon: "https://cdn.harys.is-a.dev/icons/mastodon.svg",
+    bluesky: "https://cdn.harys.is-a.dev/icons/bluesky.svg",
+    threads: "https://cdn.harys.is-a.dev/icons/threads.svg",
+    linkedin: "https://cdn.harys.is-a.dev/icons/linkedin.svg",
+    behance: "https://cdn.harys.is-a.dev/icons/behance.svg",
+    dribbble: "https://cdn.harys.is-a.dev/icons/dribbble.svg",
+    upwork: "https://cdn.harys.is-a.dev/icons/upwork.svg",
+    fiverr: "https://cdn.harys.is-a.dev/icons/fiverr.svg",
+    youtube: "https://cdn.harys.is-a.dev/icons/youtube.svg",
+    twitch: "https://cdn.harys.is-a.dev/icons/twitch.svg",
+    medium: "https://cdn.harys.is-a.dev/icons/medium.svg",
+    devto: "https://cdn.harys.is-a.dev/icons/devto.svg",
+    hashnode: "https://cdn.harys.is-a.dev/icons/hashnode.svg",
+    substack: "https://cdn.harys.is-a.dev/icons/substack.svg",
+    steam: "https://cdn.harys.is-a.dev/icons/steam.svg",
+    epicgames: "https://cdn.harys.is-a.dev/icons/epicgames.svg",
+    xbox: "https://cdn.harys.is-a.dev/icons/xbox.svg",
+    playstation: "https://cdn.harys.is-a.dev/icons/playstation.svg",
+    spotify: "https://cdn.harys.is-a.dev/icons/spotify.svg",
+    soundcloud: "https://cdn.harys.is-a.dev/icons/soundcloud.svg",
+    applemusic: "https://cdn.harys.is-a.dev/icons/applemusic.svg",
+    bandcamp: "https://cdn.harys.is-a.dev/icons/bandcamp.svg",
+    pinterest: "https://cdn.harys.is-a.dev/icons/pinterest.svg",
+    tumblr: "https://cdn.harys.is-a.dev/icons/tumblr.svg",
+    flickr: "https://cdn.harys.is-a.dev/icons/flickr.svg",
+    vimeo: "https://cdn.harys.is-a.dev/icons/vimeo.svg",
+    patreon: "https://cdn.harys.is-a.dev/icons/patreon.svg",
+    kofi: "https://cdn.harys.is-a.dev/icons/kofi.svg",
+    buymeacoffee: "https://cdn.harys.is-a.dev/icons/buymeacoffee.svg"
+};
+        
         // Audio context for hover sounds
         let audioContext;
         let hoverSound;
