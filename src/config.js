@@ -4,13 +4,14 @@
 const CONFIG = {
     // Basic Profile Information
     profile: {
+        image: "https://cdn.harys.is-a.dev/avatars/main.png", // Replace with your image URL
         name: "- HARYs -",
         description: `Hey, I'm - HARYs -. Welcome to my digital space!
         <br />
         I'm a beginner passionate developer. I love creating and sharing.
         <br />
         <i>Connect with me on social media!</i>`,
-        image: "https://cdn.harys.is-a.dev/avatars/main.png" // Replace with your image URL
+        footer: "Made with using <a href='https://github.com/harys722/profile-template'>Enhanced Profile Template</a>" // You can change the footer of your profile but keeping it intact will be appreciated.
     },
 
     // Social Media Links
