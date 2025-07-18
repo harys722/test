@@ -17,7 +17,7 @@ const CONFIG = {
         <u>This is an underline message.</u>
         <br />
         <i>Connect with me on social media!</i>`,
-        footer: "Made with using <a href='https://github.com/harys722/profile-template' target='_blank'>Enhanced Profile Template</a>" // You can change the footer of your profile but keeping it intact will be appreciated.
+        footer: "Made with using <a href='https://github.com/harys722/socials-showcase-website' target='_blank'>Socials Showcase Website</a>" // You can change the footer of your profile but keeping it intact will be appreciated.
     },
 
     // Social Media Links
