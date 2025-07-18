@@ -163,7 +163,7 @@
                         img.src = SOCIAL_ICONS[platform];
                         img.alt = `${CONFIG.socials[platform].title} icon`;
                         img.onerror = () => {
-                            img.src = 'https://via.placeholder.com/26';
+                            img.src = 'https://cdn.harys.is-a.dev/avatars/unknown_profile.png';
                         };
                         
                         socialDiv.addEventListener('mouseenter', function() {
