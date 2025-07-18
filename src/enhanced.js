@@ -119,19 +119,29 @@
             const socialIconsContainer = document.getElementById('social-icons');
 
             if (typeof CONFIG !== 'undefined' && CONFIG.profile) {
-                profileImg.src = CONFIG.profile.image || 'https://via.placeholder.com/120';
+                profileImg.src = CONFIG.profile.image || "https://cdn.harys.is-a.dev/avatars/blank_profile.png";
                 profileImg.onerror = () => {
-                    profileImg.src = 'https://via.placeholder.com/120';
+                    profileImg.src = "https://cdn.harys.is-a.dev/avatars/blank_profile.png";
                 };
-                profileName.textContent = CONFIG.profile.name || 'Your Name';
-                profileDescription.innerHTML = CONFIG.profile.description || 'Your description goes here. <i>Make it interesting!</i>';
-                footerText.innerHTML = CONFIG.profile.footer || '© 2025 Enhanced Profile Template';
+                profileName.textContent = CONFIG.profile.name || "722: JavaScript Loading Error";
+                profileDescription.innerHTML = CONFIG.profile.description || `Oops! Something went wrong. It looks like you tried to edit files but somehow messed them up. Don't worry, we'll help you get rid of it!
+            <br />
+            <br />
+            <i>You simply need to visit <a href="https://github.com/harys722/enhanced-profile-template/blob/main/config.js">here</a> and copy the file and update your config.js or look for other files.</i>
+            <br />
+            <i>If you are still unsure, feel free to open an issue for help.</i>`;
+                footerText.innerHTML = CONFIG.profile.footer || "Oops! Something went wrong. Please make sure you have configured it correctly.";
             } else {
                 console.error('CONFIG object not found or profile data missing');
-                profileImg.src = 'https://via.placeholder.com/120';
-                profileName.textContent = 'Your Name';
-                profileDescription.innerHTML = 'Your description goes here. <i>Make it interesting!</i>';
-                footerText.innerHTML = '© 2025 Enhanced Profile Template';
+                profileImg.src = "https://cdn.harys.is-a.dev/avatars/blank_profile.png";
+                profileName.textContent = "722: JavaScript Loading Error";
+                profileDescription.innerHTML = `Oops! Something went wrong. It looks like you tried to edit files but somehow messed them up. Don't worry, we'll help you get rid of it!
+            <br />
+            <br />
+            <i>You simply need to visit <a href="https://github.com/harys722/enhanced-profile-template/blob/main/config.js">here</a> and copy the file and update your config.js or look for other files.</i>
+            <br />
+            <i>If you are still unsure, feel free to open an issue for help.</i>";
+                footerText.innerHTML = "Oops! Something went wrong. Please make sure you have configured it correctly.`;
             }
             
             // Load social icons
