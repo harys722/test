@@ -268,13 +268,13 @@ footer {
 }
 
 footer a {
- color: #4ecdc4; 
+ color: #1976d2; 
  text-decoration: none;
  transition: color 0.3s ease;
 }
 
 footer a:hover {
- color: #0d47a1;
+ color: #0056b3;
  text-decoration: underline;
 }
 
