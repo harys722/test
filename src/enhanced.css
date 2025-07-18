@@ -259,21 +259,23 @@ body {
 }
 
 footer {
- margin-top: 30px;
  text-align: center;
- color: #999;
- font-size: 0.9em;
- animation: fadeIn 0.8s ease-out 0.9s both;
+ padding: 20px;
+ color: #B9BBBE; 
+ border-top: 1px solid #1976d2; 
+ margin-top: 40px;
+ animation: fadeIn 1s ease-in;
 }
 
 footer a {
- color: #4ecdc4;
+ color: #4ecdc4; 
  text-decoration: none;
  transition: color 0.3s ease;
 }
 
 footer a:hover {
- color: #ffd700;
+ color: #0d47a1;
+ text-decoration: underline;
 }
 
 /* Webkit scrollbar styles */
