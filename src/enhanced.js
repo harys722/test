@@ -129,6 +129,7 @@
             <br />
             <i>You simply need to visit <a href="https://github.com/harys722/enhanced-profile-template/blob/main/config.js">here</a> and copy the file and update your config.js or look for other files.</i>
             <br />
+            <br />
             <i>If you are still unsure, feel free to open an issue for help.</i>`;
                 footerText.innerHTML = CONFIG.profile.footer || "Oops! Something went wrong. Please make sure you have configured it correctly.";
             } else {
@@ -140,8 +141,9 @@
             <br />
             <i>You simply need to visit <a href="https://github.com/harys722/enhanced-profile-template/blob/main/config.js">here</a> and copy the file and update your config.js or look for other files.</i>
             <br />
-            <i>If you are still unsure, feel free to open an issue for help.</i>";
-                footerText.innerHTML = "Oops! Something went wrong. Please make sure you have configured it correctly.`;
+            <br />
+            <i>If you are still unsure, feel free to open an issue for help.</i>`;
+                footerText.innerHTML = "Oops! Something went wrong. Please make sure you have configured it correctly.";
             }
             
             // Load social icons
