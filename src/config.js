@@ -4,7 +4,7 @@
 const CONFIG = {
     // Basic Profile Information
     profile: {
-        image: "https://cdn.harys.is-a.dev/avatars/blank_profile.png", // Replace with your image URL
+        image: "https://harys722.github.io/test/profilie.png", // Replace with your image URL
         name: "- HARYs -",
         description: `Hey, I'm - HARYs -. Welcome to my digital space!
         <br />
