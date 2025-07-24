@@ -68,7 +68,7 @@ class ParticleSystem {
     }
 }
 
-// Main function to initialize profile and social icons
+// Main profile initialization
 function initializeProfile(data) {
     // Initialize particle system
     const canvas = document.getElementById('particles-canvas');
@@ -78,7 +78,7 @@ function initializeProfile(data) {
         console.warn('Canvas element with id "particles-canvas" not found.');
     }
 
-    // Setup profile elements
+    // Profile elements
     const profileImg = document.getElementById('profile-img');
     const profileName = document.getElementById('profile-name');
     const profileDescription = document.getElementById('profile-description');
@@ -86,16 +86,23 @@ function initializeProfile(data) {
 
     // Populate profile info
     if (data.profile) {
-        profileImg.src = data.profile.image || "https://cdn.harys.is-a.dev/avatars/blank_profile.png";
-        profileImg.onerror = () => {
-            profileImg.src = "https://cdn.harys.is-a.dev/avatars/blank_profile.png";
-        };
-        profileName.textContent = data.profile.name || "Name not provided";
-        profileDescription.innerHTML = data.profile.description || `Default description.`;
-        footerText.innerHTML = data.profile.footer || "";
+        if (profileImg) {
+            profileImg.src = data.profile.image || "https://cdn.harys.is-a.dev/avatars/blank_profile.png";
+            profileImg.onerror = () => {
+                profileImg.src = "https://cdn.harys.is-a.dev/avatars/blank_profile.png";
+            };
+        }
+        if (profileName) {
+            profileName.textContent = data.profile.name || "Name not provided";
+        }
+        if (profileDescription) {
+            profileDescription.innerHTML = data.profile.description || `Default description.`;
+        }
+        if (footerText) {
+            footerText.innerHTML = data.profile.footer || "";
+        }
     } else {
         console.error('Profile data missing in config.json');
-        // Fallback
         if (profileImg) profileImg.src = "https://cdn.harys.is-a.dev/avatars/blank_profile.png";
         if (profileName) profileName.textContent = "722: JavaScript Loading Error";
         if (profileDescription) profileDescription.innerHTML = `Oops! Something went wrong.`;
@@ -105,14 +112,9 @@ function initializeProfile(data) {
     // Populate social icons
     const socialContainer = document.getElementById('social-icons');
     if (data.socials && window.SOCIAL_ICONS && socialContainer) {
-        console.log('Processing socials:', data.socials);
         Object.keys(data.socials).forEach(platform => {
             const socialData = data.socials[platform];
-            // Debug info
-            console.log('Platform:', platform, 'Data:', socialData);
-
-            if (socialData.enabled && SOCIAL_ICONS[platform]) {
-                // Create social icon element
+            if (socialData.enabled && window.SOCIAL_ICONS[platform]) {
                 const socialDiv = document.createElement('div');
                 socialDiv.className = platform;
                 socialDiv.title = socialData.title;
@@ -123,7 +125,7 @@ function initializeProfile(data) {
                 link.rel = 'noopener noreferrer';
 
                 const img = document.createElement('img');
-                img.src = SOCIAL_ICONS[platform];
+                img.src = window.SOCIAL_ICONS[platform];
                 img.alt = `${socialData.title} icon`;
                 img.onerror = () => {
                     img.src = 'https://cdn.harys.is-a.dev/avatars/unknown_profile.png';
@@ -143,13 +145,9 @@ function initializeProfile(data) {
                     }
                 });
 
-                // Append elements
                 link.appendChild(img);
                 socialDiv.appendChild(link);
                 socialContainer.appendChild(socialDiv);
-                console.log(`Added icon for ${platform}`);
-            } else {
-                console.warn(`Skipping ${platform}: enabled=${socialData.enabled}, icon exists=${!!SOCIAL_ICONS[platform]}`);
             }
         });
     } else {
@@ -191,9 +189,7 @@ function initializeProfile(data) {
             if (typeof window.getHoverSound === 'function') {
                 try {
                     const soundFn = window.getHoverSound();
-                    if (typeof soundFn === 'function') {
-                        soundFn();
-                    }
+                    if (typeof soundFn === 'function') soundFn();
                 } catch (err) {
                     console.error('Hover sound error:', err);
                 }
@@ -204,23 +200,22 @@ function initializeProfile(data) {
 
 // Load config.json and initialize
 fetch('config.json')
-    .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-    })
-    .then(data => {
-        console.log('Config data:', data);
-        initializeProfile(data);
-    })
-    .catch(error => {
-        console.error('Error loading config:', error);
-        // Initialize with defaults if fetch fails
-        initializeProfile({});
-    });
+  .then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json();
+  })
+  .then(data => {
+    console.log('Config data:', data);
+    initializeProfile(data);
+  })
+  .catch(error => {
+    console.error('Error loading config:', error);
+    initializeProfile({});
+  });
 
 // Ensure DOM is loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        // DOM loaded, but fetch is already happening
+        // DOM is ready, but fetch is already underway
     });
 }
