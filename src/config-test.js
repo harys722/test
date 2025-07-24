@@ -216,6 +216,24 @@ fetch('config.json')
 // Ensure DOM is loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        // DOM is ready, but fetch is already underway
+        fetchAndInit();
     });
+} else {
+    fetchAndInit();
+}
+
+function fetchAndInit() {
+    fetch('config.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => {
+        console.log('Config data:', data);
+        initializeProfile(data);
+      })
+      .catch(error => {
+        console.error('Error loading config:', error);
+        initializeProfile({});
+      });
 }
