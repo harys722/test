@@ -68,47 +68,7 @@ class ParticleSystem {
     }
 }
 
-// Audio context initialization flag
-let audioInitialized = false;
-
-// Function to initialize AudioContext
-function initAudio() {
-    if (audioInitialized) return;
-    if (!window.AudioContext && !window.webkitAudioContext) {
-        console.warn('Web Audio API not supported in this browser.');
-        return;
-    }
-    window.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    console.log('AudioContext initialized.');
-    audioInitialized = true;
-}
-
-// Function to get hover sound (assumed from your sound.js)
-window.getHoverSound = function() {
-    if (!window.audioCtx) {
-        initAudio();
-        if (!window.audioCtx) return null; // fallback if init failed
-    }
-
-    // Return a function that plays a sound
-    return () => {
-        const ctx = window.audioCtx;
-        const oscillator = ctx.createOscillator();
-        const gainNode = ctx.createGain();
-
-        oscillator.type = 'square'; // or 'sine', 'triangle', etc.
-        oscillator.frequency.setValueAtTime(440, ctx.currentTime); // A4
-        gainNode.gain.setValueAtTime(0.2, ctx.currentTime);
-
-        oscillator.connect(gainNode);
-        gainNode.connect(ctx.destination);
-
-        oscillator.start();
-        oscillator.stop(ctx.currentTime + 0.2);
-    };
-};
-
-// Function to initialize profile info and social icons
+// Main profile initialization
 function initializeProfile(data) {
     // Initialize particle system
     const canvas = document.getElementById('particles-canvas');
@@ -155,13 +115,6 @@ function initializeProfile(data) {
         Object.keys(data.socials).forEach(platform => {
             const socialData = data.socials[platform];
             if (socialData.enabled && window.SOCIAL_ICONS[platform]) {
-                // Check if icon already exists to prevent duplicates
-                // Remove existing if present (optional, if you want to refresh)
-                const existing = socialContainer.querySelector(`.${platform}`);
-                if (existing) {
-                    existing.remove();
-                }
-
                 const socialDiv = document.createElement('div');
                 socialDiv.className = platform;
                 socialDiv.title = socialData.title;
@@ -178,13 +131,14 @@ function initializeProfile(data) {
                     img.src = 'https://cdn.harys.is-a.dev/avatars/unknown_profile.png';
                 };
 
-                // Hover sound with init
+                // Hover sound effect, if available
                 socialDiv.addEventListener('mouseenter', () => {
                     if (typeof window.getHoverSound === 'function') {
                         try {
-                            window.initAudio(); // Initialize audio on hover
                             const soundFn = window.getHoverSound();
-                            if (typeof soundFn === 'function') soundFn();
+                            if (typeof soundFn === 'function') {
+                                soundFn();
+                            }
                         } catch (err) {
                             console.error('Hover sound error:', err);
                         }
@@ -209,8 +163,6 @@ function initializeProfile(data) {
             ripple.style.background = 'rgba(255, 215, 0, 0.4)';
             ripple.style.transform = 'scale(0)';
             ripple.style.pointerEvents = 'none';
-
-            // Append ripple to link
             link.appendChild(ripple);
 
             const rect = link.getBoundingClientRect();
@@ -236,7 +188,6 @@ function initializeProfile(data) {
         profileImg.addEventListener('mouseenter', () => {
             if (typeof window.getHoverSound === 'function') {
                 try {
-                    window.initAudio(); // Initialize audio on hover
                     const soundFn = window.getHoverSound();
                     if (typeof soundFn === 'function') soundFn();
                 } catch (err) {
@@ -247,26 +198,42 @@ function initializeProfile(data) {
     }
 }
 
-// Load config.json and initialize profile
-function fetchAndInit() {
-    fetch('config.json')
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.json();
-        })
-        .then(data => {
-            console.log('Config data:', data);
-            initializeProfile(data);
-        })
-        .catch(error => {
-            console.error('Error loading config:', error);
-            initializeProfile({});
-        });
-}
+// Load config.json and initialize
+fetch('config.json')
+  .then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json();
+  })
+  .then(data => {
+    console.log('Config data:', data);
+    initializeProfile(data);
+  })
+  .catch(error => {
+    console.error('Error loading config:', error);
+    initializeProfile({});
+  });
 
-// Ensure DOM is loaded before running
+// Ensure DOM is loaded
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fetchAndInit);
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchAndInit();
+    });
 } else {
     fetchAndInit();
+}
+
+function fetchAndInit() {
+    fetch('config.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => {
+        console.log('Config data:', data);
+        initializeProfile(data);
+      })
+      .catch(error => {
+        console.error('Error loading config:', error);
+        initializeProfile({});
+      });
 }
