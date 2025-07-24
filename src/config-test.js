@@ -68,7 +68,7 @@ class ParticleSystem {
     }
 }
 
-// Initialize profile after loading config.json
+// Function to initialize profile after fetching config.json
 function initializeProfile(data) {
     // Initialize particle system
     const canvas = document.getElementById('particles-canvas');
@@ -79,7 +79,6 @@ function initializeProfile(data) {
     const profileName = document.getElementById('profile-name');
     const profileDescription = document.getElementById('profile-description');
     const footerText = document.getElementById('footer-text');
-    const socialIconsContainer = document.getElementById('social-icons');
 
     // Populate profile info
     if (data.profile) {
@@ -124,7 +123,10 @@ function initializeProfile(data) {
                 socialDiv.addEventListener('mouseenter', () => {
                     if (typeof window.getHoverSound === 'function') {
                         try {
-                            window.getHoverSound()();
+                            const soundFn = window.getHoverSound();
+                            if (typeof soundFn === 'function') {
+                                soundFn();
+                            }
                         } catch (err) {
                             console.error('Hover sound error:', err);
                         }
@@ -173,7 +175,10 @@ function initializeProfile(data) {
     document.getElementById('profile-img').addEventListener('mouseenter', () => {
         if (typeof window.getHoverSound === 'function') {
             try {
-                window.getHoverSound()();
+                const soundFn = window.getHoverSound();
+                if (typeof soundFn === 'function') {
+                    soundFn();
+                }
             } catch (err) {
                 console.error('Hover sound error:', err);
             }
@@ -183,22 +188,23 @@ function initializeProfile(data) {
 
 // Load config.json and initialize
 fetch('config.json')
-    .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-    })
-    .then(data => {
-        initializeProfile(data);
-    })
-    .catch(error => {
-        console.error('Failed to load config.json:', error);
-        // You may also want to initialize with default data here
-        initializeProfile({}); // or handle error accordingly
-    });
+  .then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json();
+  })
+  .then(data => {
+    console.log('Config data:', data);
+    initializeProfile(data);
+  })
+  .catch(error => {
+    console.error('Error loading config:', error);
+    // Initialize with defaults if fetch fails
+    initializeProfile({});
+  });
 
-// Optional: wait for DOM content loaded if your scripts run before DOM is ready
+// Ensure DOM is loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        // Already handled by fetch above
+        // Already handled by fetch promise
     });
 }
