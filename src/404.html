@@ -61,20 +61,40 @@
     <script>
         async function loadLinksAndRedirect() {
             try {
-                const response = await fetch('./links.json');
-                const links = await response.json();
+                // Try multiple paths to find links.json
+                const possiblePaths = ['/links.json', './links.json', 'links.json'];
+                let links = null;
                 
-                const path = window.location.pathname.slice(1);
+                for (const path of possiblePaths) {
+                    try {
+                        const response = await fetch(path);
+                        if (response.ok) {
+                            links = await response.json();
+                            break;
+                        }
+                    } catch (e) {
+                        continue;
+                    }
+                }
+                
+                if (!links) {
+                    throw new Error('Could not load links.json');
+                }
+                
+                const currentPath = window.location.pathname.slice(1);
                 const statusEl = document.getElementById('status');
                 const errorEl = document.getElementById('error');
                 
-                if (!path || path === '') {
+                console.log('Current path:', currentPath);
+                console.log('Available links:', Object.keys(links));
+                
+                if (!currentPath || currentPath === '') {
                     window.location.href = '/';
                     return;
                 }
                 
-                if (links[path]) {
-                    const targetUrl = links[path];
+                if (links[currentPath]) {
+                    const targetUrl = links[currentPath];
                     statusEl.innerHTML = `Taking you to: <strong>${targetUrl}</strong>`;
                     setTimeout(() => {
                         window.location.href = targetUrl;
@@ -88,7 +108,7 @@
             } catch (error) {
                 console.error('Error loading links:', error);
                 document.querySelector('.spinner').style.display = 'none';
-                document.getElementById('status').textContent = 'Error loading links';
+                document.getElementById('status').innerHTML = `Error: ${error.message}<br><small>Check browser console for details</small>`;
             }
         }
         
