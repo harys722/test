@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .spinner {
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top: 3px solid white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .error {
+        background: rgba(255, 0, 0, 0.2);
+        border: 1px solid rgba(255, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+
+      a {
+        color: #ffd700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>🔄 Redirecting...</h2>
+      <div class="spinner"></div>
+      <p id="status">Loading...</p>
+      <div id="error" class="error" style="display:none;">
+        <h3>❌ Link not found</h3>
+        <p>The short link doesn't exist.</p>
+        <a href="/">← Go back home</a>
+      </div>
+    </div>
+    <script src="links.js"></script>
+    <script>
+      // Get the path from URL (e.g., /github from domain.com/github) const path = window.location.pathname.slice(1); // Remove leading slash const statusEl = document.getElementById('status'); const errorEl = document.getElementById('error'); if (!path || path === '') { // Redirect to homepage if no path window.location.href = '/'; } else if (LINKS[path]) { // Found the link - redirect! const targetUrl = LINKS[path]; statusEl.innerHTML = `Taking you to: 
+      < strong > $ {
+        targetUrl
+      } < /strong>`; / / Redirect after 1 second setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 1000);
+      }
+      else { // Link not found document.querySelector('.spinner').style.display = 'none'; statusEl.style.display = 'none'; errorEl.style.display = 'block'; document.title = '404 - Link Not Found'; } 
+    </script>
+  </body>
+</html>
