@@ -135,17 +135,14 @@
     <script>
         async function loadLinksAndRedirect() {
             try {
-                // Try multiple paths to find links.json
                 const paths = ['./links.json', '/links.json', '../links.json'];
                 let links = null;
-                let loadedFrom = '';
                 
                 for (const path of paths) {
                     try {
                         const response = await fetch(path);
                         if (response.ok) {
                             links = await response.json();
-                            loadedFrom = path;
                             break;
                         }
                     } catch (e) {
@@ -157,17 +154,12 @@
                     throw new Error('Could not load links.json from any path');
                 }
                 
-                // Get the short code from URL
                 const path = window.location.pathname;
                 const segments = path.split('/').filter(segment => segment !== '');
                 const shortCode = segments[segments.length - 1];
                 
                 const statusEl = document.getElementById('status');
                 const errorEl = document.getElementById('error');
-                
-                console.log('Short code:', shortCode);
-                console.log('Available links:', Object.keys(links));
-                console.log('Loaded from:', loadedFrom);
                 
                 if (!shortCode) {
                     window.location.href = '/';
@@ -177,9 +169,7 @@
                 if (links[shortCode]) {
                     const targetUrl = links[shortCode];
                     statusEl.innerHTML = `Taking you to: <br><span class="gradient-text">${targetUrl}</span>`;
-                    setTimeout(() => {
-                        window.location.href = targetUrl;
-                    }, 1500);
+                    window.location.href = targetUrl;
                 } else {
                     document.querySelector('.spinner').style.display = 'none';
                     statusEl.style.display = 'none';
