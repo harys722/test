@@ -8,68 +8,39 @@
         html, body {
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
+            height: 100vh;
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            position: relative;
             font-family: 'Inter', sans-serif;
             color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        
         @keyframes lightningFlash {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
+        
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            min-height: 100vh;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            font-size: 36px;
-            font-weight: 800;
-            padding: 20px;
-            animation: fadeIn 1s ease-in;
-        }
-        .redirect-card {
             background-color: #2d2d2d;
-            padding: 30px;
+            padding: 40px;
             border-radius: 12px;
-            border: 1px solid #FFD700;
+            border: 2px solid #FFD700;
             text-align: center;
-            max-width: 600px;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards;
+            max-width: 500px;
+            width: 90%;
             position: relative;
             overflow: hidden;
-            margin-top: 20px;
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3);
         }
-        .redirect-card::before {
+        
+        .container::before {
             content: '';
             position: absolute;
             top: 0;
@@ -79,111 +50,133 @@
             background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
             transition: 0.5s;
         }
-        .redirect-card:hover::before {
+        
+        .container:hover::before {
             left: 100%;
         }
-        .redirect-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
-        }
-        .gradient-text {
+        
+        .header {
+            font-size: 28px;
+            font-weight: 800;
             background: linear-gradient(90deg, #FFD700, #FFA500);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
         }
+        
         .spinner {
             border: 3px solid rgba(255, 215, 0, 0.3);
             border-top: 3px solid #FFD700;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
             margin: 20px auto;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        
+        .lightning {
+            font-size: 50px;
+            color: #FFD700;
+            animation: lightningFlash 1.5s infinite;
+            margin-bottom: 20px;
         }
+        
+        .status {
+            font-size: 16px;
+            color: #e5e7eb;
+            margin: 20px 0;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        
         .error {
-            background: rgba(255, 0, 0, 0.2);
-            border: 1px solid #ff6b6b;
+            background: rgba(255, 107, 107, 0.2);
+            border: 2px solid #ff6b6b;
             border-radius: 10px;
             padding: 20px;
             margin-top: 20px;
         }
+        
+        .error h3 {
+            color: #ff6b6b;
+            margin-top: 0;
+        }
+        
         a {
             color: #FFD700;
             text-decoration: none;
+            font-weight: 600;
         }
+        
         a:hover {
             color: #FFA500;
-        }
-        button {
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            color: #1a1a1a;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            font-weight: 600;
-            margin-top: 20px;
-        }
-        button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
-        }
-        #lightning {
-            width: 40px;
-            height: 40px;
-            margin: 10px auto;
-            animation: lightningFlash 1s infinite;
-            color: #FFD700;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            ⚡ URL Shortener
-        </div>
-        
-        <div class="redirect-card">
-            <div id="lightning">⚡</div>
-            <h2 class="gradient-text">Redirecting...</h2>
-            <div class="spinner"></div>
-            <p id="status">Loading...</p>
-            <div id="error" class="error" style="display:none;">
-                <h3>❌ Link not found</h3>
-                <p>The short link doesn't exist.</p>
-                <a href="/">← Go back home</a>
-            </div>
+        <div class="lightning">⚡</div>
+        <div class="header">Redirecting...</div>
+        <div class="spinner"></div>
+        <div id="status" class="status">Loading...</div>
+        <div id="error" class="error" style="display:none;">
+            <h3>❌ Link not found</h3>
+            <p>The short link doesn't exist.</p>
+            <a href="/">← Go back home</a>
         </div>
     </div>
 
     <script>
         async function loadLinksAndRedirect() {
             try {
-                const response = await fetch('/links.json');
-                if (!response.ok) {
-                    throw new Error('Could not load links.json');
-                }
-                const links = await response.json();
+                // Try multiple paths to find links.json
+                const paths = ['./links.json', '/links.json', '../links.json'];
+                let links = null;
+                let loadedFrom = '';
                 
-                const fullPath = window.location.pathname;
-                const shortCode = fullPath.split('/').pop();
+                for (const path of paths) {
+                    try {
+                        const response = await fetch(path);
+                        if (response.ok) {
+                            links = await response.json();
+                            loadedFrom = path;
+                            break;
+                        }
+                    } catch (e) {
+                        continue;
+                    }
+                }
+                
+                if (!links) {
+                    throw new Error('Could not load links.json from any path');
+                }
+                
+                // Get the short code from URL
+                const path = window.location.pathname;
+                const segments = path.split('/').filter(segment => segment !== '');
+                const shortCode = segments[segments.length - 1];
                 
                 const statusEl = document.getElementById('status');
                 const errorEl = document.getElementById('error');
                 
-                if (!shortCode || shortCode === '') {
+                console.log('Short code:', shortCode);
+                console.log('Available links:', Object.keys(links));
+                console.log('Loaded from:', loadedFrom);
+                
+                if (!shortCode) {
                     window.location.href = '/';
                     return;
                 }
                 
                 if (links[shortCode]) {
                     const targetUrl = links[shortCode];
-                    statusEl.innerHTML = `Taking you to: <strong class="gradient-text">${targetUrl}</strong>`;
+                    statusEl.innerHTML = `Taking you to: <br><span class="gradient-text">${targetUrl}</span>`;
                     setTimeout(() => {
                         window.location.href = targetUrl;
                     }, 1500);
@@ -194,9 +187,14 @@
                     document.title = '404 - Link Not Found';
                 }
             } catch (error) {
-                console.error('Error loading links:', error);
+                console.error('Error:', error);
                 document.querySelector('.spinner').style.display = 'none';
-                document.getElementById('status').innerHTML = `<span class="gradient-text">Error loading links</span><br><small>Make sure links.json exists</small>`;
+                document.getElementById('status').innerHTML = `
+                    <div style="color: #ff6b6b;">
+                        <strong>Error loading links</strong><br>
+                        <small>Check console for details</small>
+                    </div>
+                `;
             }
         }
         
