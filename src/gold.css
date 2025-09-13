@@ -1,0 +1,559 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;700&family=Lato:wght@300;400;500&display=swap");
+
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+body {
+ font-family: "Lato", sans-serif;
+ background: 
+  radial-gradient(circle at 15% 85%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+  radial-gradient(circle at 85% 15%, rgba(255, 193, 7, 0.2) 0%, transparent 50%),
+  radial-gradient(circle at 50% 50%, rgba(218, 165, 32, 0.1) 0%, transparent 60%),
+  linear-gradient(135deg, #2c1810 0%, #3d2817 20%, #4a3219 40%, #5d3f1b 60%, #6b4423 80%, #7a4a26 100%);
+ background-attachment: fixed;
+ background-size: 100% 100%, 100% 100%, 120% 120%, 100% 100%;
+ color: #2c1810;
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ padding: 20px;
+ line-height: 1.6;
+ overflow-x: hidden;
+ position: relative;
+ animation: bodyShimmer 10s ease-in-out infinite alternate;
+}
+
+@keyframes bodyShimmer {
+ 0% {
+  background-size: 100% 100%, 100% 100%, 120% 120%, 100% 100%;
+ }
+ 100% {
+  background-size: 130% 130%, 130% 130%, 140% 140%, 100% 100%;
+ }
+}
+
+/* Enhanced body overlay for luxurious depth */
+body::before {
+ content: '';
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background: 
+  radial-gradient(ellipse at top left, rgba(255, 215, 0, 0.08) 0%, transparent 70%),
+  radial-gradient(ellipse at bottom right, rgba(218, 165, 32, 0.12) 0%, transparent 70%),
+  linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.03) 50%, transparent 70%);
+ pointer-events: none;
+ z-index: -2;
+ animation: luxuryShift 15s ease-in-out infinite;
+}
+
+@keyframes luxuryShift {
+ 0%, 100% {
+  opacity: 0.6;
+  transform: scale(1) rotate(0deg);
+ }
+ 33% {
+  opacity: 0.8;
+  transform: scale(1.02) rotate(0.3deg);
+ }
+ 66% {
+  opacity: 0.7;
+  transform: scale(1.01) rotate(-0.3deg);
+ }
+}
+
+/* Particle Canvas */
+#particles-canvas {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: -1;
+ pointer-events: none;
+}
+
+/* Floating Elements */
+.floating-element {
+ position: absolute;
+ pointer-events: none;
+ opacity: 0.2;
+ animation: goldenFloat 8s ease-in-out infinite;
+ filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.3));
+}
+
+@keyframes goldenFloat {
+ 0%,
+ 100% {
+  transform: translateY(0px) rotate(0deg) scale(1);
+ }
+ 33% {
+  transform: translateY(-15px) rotate(120deg) scale(1.05);
+ }
+ 66% {
+  transform: translateY(-8px) rotate(240deg) scale(0.95);
+ }
+}
+
+.info-box {
+ background: linear-gradient(145deg, 
+  rgba(255, 215, 0, 0.15) 0%,
+  rgba(255, 193, 7, 0.12) 25%,
+  rgba(218, 165, 32, 0.1) 50%,
+  rgba(255, 215, 0, 0.08) 75%,
+  rgba(255, 193, 7, 0.12) 100%
+ );
+ backdrop-filter: blur(25px);
+ border: 2px solid rgba(255, 215, 0, 0.3);
+ border-radius: 40px;
+ padding: 60px;
+ max-width: 750px;
+ width: 100%;
+ text-align: center;
+ box-shadow: 
+  0 30px 60px rgba(0, 0, 0, 0.3),
+  0 15px 35px rgba(255, 215, 0, 0.15),
+  inset 0 1px 0 rgba(255, 215, 0, 0.4),
+  inset 0 0 40px rgba(255, 215, 0, 0.05),
+  0 0 80px rgba(255, 215, 0, 0.1);
+ position: relative;
+ overflow: hidden;
+ animation: slideIn 1s ease-out, goldenGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes slideIn {
+ from {
+  opacity: 0;
+  transform: translateY(40px) scale(0.9);
+ }
+ to {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+ }
+}
+
+@keyframes goldenGlow {
+ 0% {
+  box-shadow: 
+   0 30px 60px rgba(0, 0, 0, 0.3),
+   0 15px 35px rgba(255, 215, 0, 0.15),
+   inset 0 1px 0 rgba(255, 215, 0, 0.4),
+   inset 0 0 40px rgba(255, 215, 0, 0.05),
+   0 0 80px rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+ }
+ 100% {
+  box-shadow: 
+   0 30px 60px rgba(0, 0, 0, 0.4),
+   0 20px 45px rgba(255, 215, 0, 0.25),
+   inset 0 1px 0 rgba(255, 215, 0, 0.6),
+   inset 0 0 40px rgba(255, 215, 0, 0.1),
+   0 0 120px rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.5);
+ }
+}
+
+/* Luxurious metallic effect for info-box */
+.info-box::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: linear-gradient(
+  135deg,
+  rgba(255, 255, 255, 0.15) 0%,
+  rgba(255, 215, 0, 0.1) 25%,
+  rgba(255, 255, 255, 0.08) 50%,
+  rgba(218, 165, 32, 0.05) 75%,
+  rgba(255, 255, 255, 0.03) 100%
+ );
+ border-radius: 40px;
+ pointer-events: none;
+ z-index: -1;
+ animation: metallicShimmer 4s ease-in-out infinite;
+}
+
+@keyframes metallicShimmer {
+ 0%, 100% {
+  opacity: 0.6;
+ }
+ 50% {
+  opacity: 0.9;
+ }
+}
+
+.center-img {
+ width: 120px;
+ height: 120px;
+ border-radius: 50%;
+ border: 4px solid #FFD700;
+ object-fit: cover;
+ transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+ box-shadow: 
+  0 12px 35px rgba(0, 0, 0, 0.4),
+  0 0 0 6px rgba(255, 215, 0, 0.2),
+  0 0 25px rgba(255, 215, 0, 0.4);
+ position: relative;
+ filter: brightness(1.1) saturate(1.2);
+}
+
+.center-img:hover {
+ transform: scale(1.15) rotate(8deg);
+ box-shadow: 
+  0 18px 50px rgba(0, 0, 0, 0.5),
+  0 0 0 8px rgba(255, 215, 0, 0.4),
+  0 0 40px rgba(255, 215, 0, 0.6);
+ border-color: #FFEB3B;
+ filter: brightness(1.3) saturate(1.4);
+}
+
+.title {
+ font-family: "Playfair Display", serif;
+ font-size: 3.2em;
+ font-weight: 700;
+ background: linear-gradient(45deg, #FFD700, #FFA000, #FF8F00, #FFD700, #FFEB3B);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-clip: text;
+ background-size: 300% 300%;
+ display: block;
+ margin: 30px 0 25px;
+ animation: 
+  fadeIn 1s ease-out 0.4s both,
+  goldenTitleGlow 3s ease-in-out infinite alternate,
+  luxuryGradientShift 4s ease-in-out infinite;
+ text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+ letter-spacing: 1px;
+}
+
+@keyframes fadeIn {
+ from {
+  opacity: 0;
+  transform: translateY(20px);
+ }
+ to {
+  opacity: 1;
+  transform: translateY(0);
+ }
+}
+
+@keyframes goldenTitleGlow {
+ from {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+ }
+ to {
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9)) drop-shadow(0 0 30px rgba(255, 193, 7, 0.4));
+ }
+}
+
+@keyframes luxuryGradientShift {
+ 0% {
+  background-position: 0% 50%;
+ }
+ 25% {
+  background-position: 50% 0%;
+ }
+ 50% {
+  background-position: 100% 50%;
+ }
+ 75% {
+  background-position: 50% 100%;
+ }
+ 100% {
+  background-position: 0% 50%;
+ }
+}
+
+.details {
+ font-size: 1.3em;
+ color: #3d2817;
+ margin-bottom: 40px;
+ animation: fadeIn 1s ease-out 0.6s both;
+ line-height: 1.9;
+ text-shadow: 0 1px 3px rgba(255, 215, 0, 0.2);
+ font-weight: 400;
+}
+
+.details i {
+ color: #B8860B;
+ font-style: italic;
+ font-weight: 500;
+}
+
+a {
+ color: #B8860B;
+ text-decoration: none;
+ transition: all 0.4s ease;
+ position: relative;
+ font-weight: 500;
+}
+
+a::after {
+ content: '';
+ position: absolute;
+ bottom: -3px;
+ left: 0;
+ width: 0;
+ height: 2px;
+ background: linear-gradient(45deg, #FFD700, #FFA000);
+ transition: width 0.4s ease;
+ border-radius: 1px;
+}
+
+a:hover {
+ color: #FFD700;
+ text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+ transform: translateY(-1px);
+}
+
+a:hover::after {
+ width: 100%;
+ box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.social-icons {
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+ gap: 25px;
+ animation: fadeIn 1s ease-out 0.8s both;
+ margin-bottom: 25px;
+}
+
+.social-icons > div {
+ position: relative;
+ cursor: pointer;
+ transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icons > div:hover {
+ transform: translateY(-12px) scale(1.08) rotate(5deg);
+}
+
+.social-icons a {
+ display: block;
+ width: 60px;
+ height: 60px;
+ border-radius: 18px;
+ background: linear-gradient(145deg, 
+  rgba(255, 215, 0, 0.15),
+  rgba(218, 165, 32, 0.1),
+  rgba(255, 215, 0, 0.05)
+ );
+ border: 2px solid rgba(255, 215, 0, 0.4);
+ color: #3d2817;
+ text-decoration: none;
+ transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ backdrop-filter: blur(20px);
+ position: relative;
+ overflow: hidden;
+ box-shadow: 
+  0 8px 25px rgba(0, 0, 0, 0.2),
+  inset 0 1px 0 rgba(255, 215, 0, 0.3);
+}
+
+.social-icons a::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: -100%;
+ width: 100%;
+ height: 100%;
+ background: linear-gradient(
+  90deg,
+  transparent,
+  rgba(255, 215, 0, 0.3),
+  rgba(255, 193, 7, 0.2),
+  transparent
+ );
+ transition: left 0.6s ease;
+}
+
+.social-icons a:hover::before {
+ left: 100%;
+}
+
+.social-icons a:hover {
+ background: linear-gradient(145deg, 
+  rgba(255, 215, 0, 0.25),
+  rgba(218, 165, 32, 0.2),
+  rgba(255, 215, 0, 0.15)
+ );
+ border-color: #FFD700;
+ color: #2c1810;
+ box-shadow: 
+  0 15px 40px rgba(0, 0, 0, 0.3),
+  0 0 30px rgba(255, 215, 0, 0.4),
+  inset 0 1px 0 rgba(255, 215, 0, 0.6);
+ transform: rotate(8deg) scale(1.05);
+}
+
+.social-icons img {
+ width: 28px;
+ height: 28px;
+ filter: brightness(0) saturate(100%) invert(23%) sepia(29%) saturate(1068%) hue-rotate(14deg) brightness(94%) contrast(88%);
+ transition: all 0.4s ease;
+}
+
+.social-icons a:hover img {
+ transform: scale(1.3);
+ filter: brightness(0) saturate(100%) invert(23%) sepia(29%) saturate(1068%) hue-rotate(14deg) brightness(94%) contrast(88%) drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+}
+
+/* Luxurious Enhanced Tooltip */
+.social-icons > div::before {
+ content: attr(title);
+ position: absolute;
+ bottom: 75px;
+ left: 50%;
+ transform: translateX(-50%);
+ background: linear-gradient(145deg, rgba(44, 24, 16, 0.95), rgba(61, 40, 23, 0.9));
+ color: #FFD700;
+ padding: 12px 18px;
+ border-radius: 10px;
+ font-size: 0.9em;
+ font-weight: 500;
+ white-space: nowrap;
+ opacity: 0;
+ pointer-events: none;
+ transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+ z-index: 1000;
+ backdrop-filter: blur(15px);
+ border: 1px solid rgba(255, 215, 0, 0.3);
+ box-shadow: 
+  0 8px 25px rgba(0, 0, 0, 0.4),
+  0 0 15px rgba(255, 215, 0, 0.2);
+ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.social-icons > div::after {
+ content: "";
+ position: absolute;
+ bottom: 66px;
+ left: 50%;
+ transform: translateX(-50%);
+ width: 0;
+ height: 0;
+ border-left: 8px solid transparent;
+ border-right: 8px solid transparent;
+ border-top: 8px solid rgba(44, 24, 16, 0.95);
+ opacity: 0;
+ pointer-events: none;
+ transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icons > div:hover::before,
+.social-icons > div:hover::after {
+ opacity: 1;
+ transform: translateX(-50%) translateY(-8px);
+}
+
+footer {
+ text-align: center;
+ padding: 25px;
+ color: #B8860B;
+ border-top: 1px solid rgba(255, 215, 0, 0.2);
+ margin-top: 45px;
+ animation: fadeIn 1.2s ease-in;
+ backdrop-filter: blur(15px);
+ background: linear-gradient(145deg, 
+  rgba(255, 215, 0, 0.05),
+  rgba(218, 165, 32, 0.03)
+ );
+ border-radius: 20px 20px 0 0;
+ font-weight: 500;
+ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Luxurious scrollbar styles */
+::-webkit-scrollbar {
+ width: 12px;
+ height: 12px;
+}
+
+::-webkit-scrollbar-track {
+ background: rgba(44, 24, 16, 0.3);
+ border-radius: 6px;
+ border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+ background: linear-gradient(45deg, #FFD700, #FFA000, #FF8F00);
+ border-radius: 6px;
+ border: 2px solid rgba(44, 24, 16, 0.2);
+ box-shadow: 
+  0 2px 8px rgba(0, 0, 0, 0.3),
+  inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+ background: linear-gradient(45deg, #FFEB3B, #FFD700, #FFA000);
+ box-shadow: 
+  0 4px 12px rgba(0, 0, 0, 0.4),
+  0 0 15px rgba(255, 215, 0, 0.3),
+  inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+ body {
+  background-attachment: scroll;
+ }
+ 
+ .info-box {
+  padding: 45px 30px;
+  margin: 20px;
+  border-radius: 30px;
+ }
+ .title {
+  font-size: 2.6em;
+ }
+ .details {
+  font-size: 1.2em;
+ }
+ .social-icons {
+  gap: 18px;
+ }
+ .social-icons a {
+  width: 55px;
+  height: 55px;
+ }
+ .social-icons img {
+  width: 24px;
+  height: 24px;
+ }
+}
+
+@media (max-width: 480px) {
+ .center-img {
+  width: 100px;
+  height: 100px;
+ }
+ .title {
+  font-size: 2.2em;
+  letter-spacing: 0.5px;
+ }
+ .social-icons {
+  gap: 15px;
+ }
+ .social-icons a {
+  width: 50px;
+  height: 50px;
+ }
+ .social-icons img {
+  width: 22px;
+  height: 22px;
+ }
+}
